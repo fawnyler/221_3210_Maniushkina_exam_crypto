@@ -15,18 +15,25 @@ public:
     explicit cardwidget(QWidget *parent = nullptr);
     ~cardwidget();
 
-    void setNumber(int number); // Метод для установки числа на карте
+    void setNumber(int number);
+    void showNumber(bool show);
+    void setScored(bool scored);
+    bool isScored() const;
+
+    int getNumber() const { return m_number; }
 
 signals:
-    void cardClicked(int value); // Сигнал, отправляемый при нажатии на карту
+    void cardClicked(int value);
+    void scoreCounted(int value);
 
 private slots:
-    void on_cardButton_clicked(); // Слот для обработки нажатия на карту
+    void on_cardButton_clicked();
 
 private:
     Ui::cardwidget *ui;
-    int m_number; // Переменная для хранения числа, связанного с картой
-    bool m_isOpened; // Флаг, отображающий состояние карточки (открыта или закрыта)
+    int m_number;
+    bool m_isOpened;
+    bool m_isScored;
 };
 
 #endif // CARDWIDGET_H
