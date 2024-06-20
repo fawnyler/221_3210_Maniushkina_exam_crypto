@@ -21,17 +21,19 @@ public:
 private slots:
     void on_loginButton_clicked();
     void resetGame();
+    void handleCardClick(int value);
+    void handleCardScored(int value);
+    void checkScoredCards();
 
 private:
     Ui::MainWindow *ui;
     bool m_isStartup = true;
     QString m_correctPin = "1234";
-
-    // Array of cardwidgets
-    cardwidget *m_cardWidgets[9];
-
-    // Score tracker
+    QList<cardwidget*> m_cardWidgets;
     int m_score = 0;
+    QList<int> m_clickedValues;
+
+    void setupCardWidgets();
 };
 
 #endif // MAINWINDOW_H
