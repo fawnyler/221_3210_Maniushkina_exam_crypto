@@ -2,8 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QMessageBox>
-#include "gamewindow.h"
+#include "cardwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,13 +19,19 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_btnLogin_clicked();
-    void on_edtPin_returnPressed();
+    void on_loginButton_clicked();
+    void resetGame();
 
 private:
     Ui::MainWindow *ui;
-    GameWindow *gameWindow;
-    const QString correctPin = "1234";
+    bool m_isStartup = true;
+    QString m_correctPin = "1234";
+
+    // Array of cardwidgets
+    cardwidget *m_cardWidgets[9];
+
+    // Score tracker
+    int m_score = 0;
 };
 
 #endif // MAINWINDOW_H
